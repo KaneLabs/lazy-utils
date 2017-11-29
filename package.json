@@ -2,7 +2,7 @@
   "private": true,
   "name": "lazy-utils",
   "version": "1.0.0",
-  "description": "shared functions in the lazy ecosystem",
+  "description": "Shared functions in the lazy ecosystem",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive"
