@@ -81,7 +81,7 @@
          "storeFoodActive":true,
          "storeShopActive":false
       },
-      "quantity":1,
+      "quantity":3,
       "addonsArr":[
          {
             "addonId":"819",
@@ -98,7 +98,7 @@
             "addonId":"812",
             "addonTitle":"Regular White Wrap ",
             "addonDesc":"",
-            "addonPrice":"0.00",
+            "addonPrice":"2.00",
             "addonImgUrl":null,
             "addonTax":"0.00",
             "addonIndex":0,

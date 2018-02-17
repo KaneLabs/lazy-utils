@@ -60,15 +60,23 @@ function calcTaxTotal(cart) {
 
     const itemsAddonsTaxAmount = calcItemsAddonsTaxes(cartItem.addonsArr);
 
-    return Math.ceil(itemTaxAmount + itemsAddonsTaxAmount);
+    console.log('itemsAddonsTaxAmount', itemsAddonsTaxAmount);
+
+    console.log((itemTaxAmount + itemsAddonsTaxAmount) * cartItem.quantity);
+
+    console.log(Math.ceil(itemTaxAmount + itemsAddonsTaxAmount) * cartItem.quantity);
+
+    return (itemTaxAmount + itemsAddonsTaxAmount) * cartItem.quantity;
   })
     .reduce((a, b) => a + b);
+
+    console.log(taxTotal, taxTotal);
 
   return taxTotal;
 }
 
 // On
-function calcFeeTotal(cart) {
+function calcFeeAmount(cart) {
   const uniqueStores = [];
 
   cart.forEach((cartItem) => {
@@ -90,14 +98,19 @@ function calcSubTotal(cart) {
 
     const itemPrice = normalizePrice(cartItem.item.itemPrice);
 
-    let addonsPrice = 0;
+    let itemsAddonsPrice = 0;
     for (let i = 0; i < cartItem.addonsArr.length; i += 1) {
-      addonsPrice += normalizePrice(cartItem.addonsArr[i].addonPrice);
+      itemsAddonsPrice += normalizePrice(cartItem.addonsArr[i].addonPrice);
     }
 
-    return itemPrice + addonsPrice;
+    console.log('itemsAddonsPrice', itemsAddonsPrice);
+    console.log('item sub total', (itemPrice + itemsAddonsPrice));
+
+    return (itemPrice + itemsAddonsPrice) * cartItem.quantity;
   })
     .reduce((a, b) => a + b);
+
+    console.log(subTotal);
 
   return subTotal;
 }
@@ -221,8 +234,25 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+const formatForURL = (str) => {
+  const replaceAnd = str.replace(/&/g, 'and');
+  const cleansedOfSpecChars = replaceAnd.replace(/[^\w\s]/gi, '');
+  const urlFriendly = cleansedOfSpecChars.replace(/ +/g, '-');
+
+  return urlFriendly.toLowerCase();
+};
+
+const capitalizeFirstLetter = str => (
+  `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`
+);
+
+const calcCartAmount = (cart) => {
+  return calcFeeAmount(cart) + calcSubTotal(cart) + calcTaxTotal(cart);
+};
+
 module.exports = {
-  calcFeeTotal,
+  calcCartAmount,
+  calcFeeAmount,
   calcSubTotal,
   calcTaxAmount,
   calcTaxTotal,
@@ -230,6 +260,7 @@ module.exports = {
   checkCartForStoreIds,
   checkCartForSubTotal,
   checkCartForFeeTotal,
+  formatForURL,
   is18,
   is21,
   normalizePrice,

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "lazy-utils",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Shared functions in the lazy ecosystem",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,16 @@
   },
   "dependencies": {
     "moment-timezone": "^0.5.14"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaneLabs/lazy-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KaneLabs/lazy-utils/issues"
+  },
+  "homepage": "https://github.com/KaneLabs/lazy-utils#readme"
 }

@@ -1,6 +1,7 @@
 const {
-  // calcFeeTotal,
-  // calcSubTotal,
+  calcCartAmount,
+  calcFeeAmount,
+  calcSubTotal,
   calcTaxAmount,
   calcTaxTotal,
   // checkCartToTellIfThisStoresAgeRestriced,
@@ -73,17 +74,48 @@ describe('calcTaxAmount(taxRate, itemPrice)', () => {
   });
 
   it('should round up to nearest whole penny', () => {
-    expect(calcTaxAmount('8.99', 290)).to.deep.equal(27);
-    expect(calcTaxAmount('8.99', '2.90')).to.deep.equal(27);
+    expect(calcTaxAmount('8.99', 899)).to.deep.equal(81);
+    expect(calcTaxAmount('8.99', '8.99')).to.deep.equal(81);
   });
 });
 
 describe('calcTaxTotal(cart)', () => {
   it('should return the correct tax total for string price inputs', () => {
-    expect(calcTaxTotal(stringPriceCart)).to.deep.equal(108);
+    expect(calcTaxTotal(stringPriceCart)).to.deep.equal(270);
   });
 
   it('should return the correct tax total for integer price inputs', () => {
-    expect(calcTaxTotal(intPriceChart)).to.deep.equal(108);
+    expect(calcTaxTotal(intPriceChart)).to.deep.equal(270);
+  });
+});
+
+
+describe('calcSubTotal(cart)', () => {
+  it('should return the correct sub total for string price inputs', () => {
+    expect(calcSubTotal(stringPriceCart)).to.deep.equal(3597);
+  });
+
+  it('should return the correct sub total for integer price inputs', () => {
+    expect(calcSubTotal(intPriceChart)).to.deep.equal(3597);
+  });
+});
+
+describe('calcFeeAmount(cart)', () => {
+  it('should return the correct sub total for string price inputs', () => {
+    expect(calcFeeAmount(stringPriceCart)).to.deep.equal(550);
+  });
+
+  it('should return the correct sub total for integer price inputs', () => {
+    expect(calcFeeAmount(intPriceChart)).to.deep.equal(550);
+  });
+});
+
+describe('calcCartAmount(cart)', () => {
+  it('should return the correct cart amount for string price inputs', () => {
+    expect(calcCartAmount(stringPriceCart)).to.deep.equal(4417);
+  });
+
+  it('should return the correct cart amount for integer price inputs', () => {
+    expect(calcCartAmount(intPriceChart)).to.deep.equal(4417);
   });
 });
