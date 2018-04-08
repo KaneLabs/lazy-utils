@@ -256,6 +256,7 @@ module.exports = {
   calcSubTotal,
   calcTaxAmount,
   calcTaxTotal,
+  capitalizeFirstLetter,
   checkCartToTellIfThisStoresAgeRestriced,
   checkCartForStoreIds,
   checkCartForSubTotal,
