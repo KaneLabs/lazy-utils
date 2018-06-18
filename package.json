@@ -1,5 +1,5 @@
 {
-  "name": "lazy-utils",
+  "name": "lazybuffs-utils",
   "version": "0.0.1",
   "description": "Shared functions in the lazy ecosystem",
   "main": "index.js",
