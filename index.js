@@ -1,5 +1,7 @@
 const moment = require('moment-timezone');
 
+const stylePhone = (num) => `${num.slice(0, 3)}-${num.slice(3, 6)}-${num.slice(6, 10)}`;
+
 const normalizePrice = (price) => {
   try {
     if (isNaN(parseFloat(price))) return 0;
@@ -268,6 +270,7 @@ module.exports = {
   normalizeTax,
   removeSpecialChars,
   splitOrdersIntoStore,
+  stylePhone,
   validateEmail,
   validateIsNumberAndPositve,
   validateNumberPositiveOrZero,
