@@ -95,7 +95,7 @@ function calcFeeAmount(cart) {
   return feeTotal;
 }
 
-function calcSubTotal(cart) {
+const calcSubTotal = (cart) => {
   const subTotal = cart.map((cartItem) => {
 
     const itemPrice = normalizePrice(cartItem.item.itemPrice);
@@ -111,8 +111,6 @@ function calcSubTotal(cart) {
     return (itemPrice + itemsAddonsPrice) * cartItem.quantity;
   })
     .reduce((a, b) => a + b);
-
-    console.log(subTotal);
 
   return subTotal;
 }
